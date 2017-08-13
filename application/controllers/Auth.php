@@ -80,14 +80,19 @@ class Auth extends CI_Controller {
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-			$this->data['identity'] = array('name' => 'identity',
+			$this->data['identity'] = array(
+			    'name' => 'identity',
 				'id'    => 'identity',
 				'type'  => 'text',
+                'class' => 'form-control',
+				'placeholder' => 'Email',
 				'value' => $this->form_validation->set_value('identity'),
 			);
 			$this->data['password'] = array('name' => 'password',
 				'id'   => 'password',
 				'type' => 'password',
+                'class' => 'form-control',
+                'placeholder' => 'Password'
 			);
 
 			$this->_render_page('auth/login', $this->data);
@@ -195,6 +200,8 @@ class Auth extends CI_Controller {
 			// setup the input
 			$this->data['identity'] = array('name' => 'identity',
 				'id' => 'identity',
+                'class' => 'form-control',
+                'placeholder' => 'Your email'
 			);
 
 			if ( $this->config->item('identity', 'ion_auth') != 'email' ){
