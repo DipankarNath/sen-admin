@@ -102,4 +102,18 @@ class Dashboard extends CI_Controller {
             print_r($data); exit;
         }
     }
+
+    public function view()
+    {
+        //load the database
+       // $this->load->database();
+        //load the model
+        $this->load->model('DashboardModel');
+        //load the method of model
+        $data['vehicleData']=$this->DashboardModel->selectAll();
+        //return the data in view
+        $data['page'] = 'partial/ViewVehicle';
+        $this->load->view('common/Dashboard', $data);
+//        $this->load->view('ViewVehicle', $data);
+    }
 }
