@@ -53,7 +53,7 @@
                             <li><a href="boxed_full.html">Boxed full width</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?php echo base_url()?>"><i class="icon-home4"></i> <span>Add Vehicle</span></a></li>
+                    <li><a href="<?php echo base_url()?>Dashboard/page/AddVehicle"><i class="icon-home4"></i> <span>Add Vehicle</span></a></li>
                     <li><a href=""><i class="icon-home4"></i> <span>View Vehicle</span></a></li>
 
                     <!-- /page kits -->
