@@ -188,5 +188,15 @@ class Dashboard extends CI_Controller {
         $data['page'] = 'partial/AddVehicle';
         redirect(base_url().'Dashboard/page/AddVehicle');
     }
-
+  
+  public function view()
+    {
+        //load the model
+        $this->load->model('DashboardModel');
+        //load the method of model
+        $data['vehicleData']=$this->DashboardModel->selectAll();
+        //return the data in view
+        $data['page'] = 'partial/ViewVehicle';
+        $this->load->view('common/Dashboard', $data);
+    }
 }

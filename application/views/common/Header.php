@@ -30,6 +30,9 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/plugins/ui/moment/moment.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/plugins/pickers/daterangepicker.js"></script>
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/plugins/tables/datatables/datatables.min.js"></script>
+
 
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/core/app.js"></script>
     <!--    <script type="text/javascript" src="--><?php //echo base_url()?><!--assets/js/pages/dashboard.js"></script>-->

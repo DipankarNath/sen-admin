@@ -1,4 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 /**
  * Created by PhpStorm.
  * User: dipan
@@ -30,5 +31,12 @@ class DashboardModel extends CI_Model{
             return false;
         }
     }
+    public function selectAll()
+          {
+              //data is retrive from this query
+              $query = $this->db->get('product');
+              return $query;
+          }
 
 }
+
