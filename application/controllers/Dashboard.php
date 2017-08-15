@@ -18,11 +18,16 @@ class Dashboard extends CI_Controller {
 
     public function page($page = 'Stats')
     {
-        if (!file_exists(APPPATH.'views/partial/'.$page.'.php')) {
-            show_404();
+        if(!$this->ion_auth->logged_in()){
+            redirect('auth/login', 'refresh');
+        } else {
+            if (!file_exists(APPPATH.'views/partial/'.$page.'.php')) {
+                show_404();
+            }
+            $data['page'] = 'partial/'.$page;
+            $this->load->view('common/Dashboard', $data);
         }
-        $data['page'] = 'partial/'.$page;
-        $this->load->view('common/Dashboard', $data);
+
     }
 
     public function addVehicle()
