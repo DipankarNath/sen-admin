@@ -83,3 +83,77 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+/*
+|--------------------------------------------------------------------------
+| Custom Enums
+|--------------------------------------------------------------------------
+|
+| These are the Category Names
+|
+*/
+defined('VCATEGORY') OR define('VCATEGORY', serialize(array(
+    0 => array(
+        'id' => 1,
+        'name'=> "Loader"
+    ),
+    1 => array(
+        'id' => 2,
+        'name'=> "Dump"
+    ),
+    2 => array(
+        'id' => 3,
+        'name'=> "Crane Car"
+    ),
+    3 => array(
+        'id' => 4,
+        'name'=> "Self-heavy Equipment Transporter"
+    ),
+    4 => array(
+        'id' => 5,
+        'name'=> "Mixer Car"
+    ),
+    5 => array(
+        'id' => 6,
+        'name'=> "Aerial Work Vehicle"
+    ),
+    6 => array(
+        'id' => 7,
+        'name'=> "Specially Equipped Car-other"
+    ),
+    7 => array(
+        'id' => 8,
+        'name'=> "Trailer Head"
+    ),
+    8 => array(
+        'id' => 9,
+        'name'=> "Wing Car"
+    ),
+    9 => array(
+        'id' => 10,
+        'name'=> "Van Car"
+    ),
+    10 => array(
+        'id' => 11,
+        'name'=> "Refrigerated Freezer"
+    ),
+    11 => array(
+        'id' => 12,
+        'name'=> "Passenger Car"
+    ),
+    12 => array(
+        'id' => 13,
+        'name'=> "Flat Body"
+    ),
+    13 => array(
+        'id' => 14,
+        'name'=> "Packer Car"
+    ),
+    14 => array(
+        'id' => 15,
+        'name'=> "Bus"
+    ),
+    15 => array(
+        'id' => 16,
+        'name'=> "Construction Machine"
+    )
+)));
