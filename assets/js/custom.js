@@ -96,8 +96,7 @@ $(function () {
         allowedFileExtensions: ["jpg", "gif", "png", "txt"]
     });
 // Bootstrap File Input END
-
-    // Checkboxes/radios (Uniform)
+// Checkboxes/radios (Uniform)
     // ------------------------------
 
     // Default initialization
@@ -132,24 +131,63 @@ $(function () {
         radioClass: 'choice',
         wrapperClass: 'border-info-600 text-info-800'
     });
-
-    // Custom color
+  // Custom color
     $(".control-custom").uniform({
         radioClass: 'choice',
         wrapperClass: 'border-indigo-600 text-indigo-800'
     });
-
-// Checkboxes/radios (Uniform) END
-    // ------------------------------
-
-// Basic examples
-    // ------------------------------
-
-    // Basic initialization
+  //Select Box
+  // Basic initialization
     $(".selectbox").selectBoxIt({
         autoWidth: false
     });
+/* ------------------------------------------------------------------------------
+*
+*  # Basic datatables
+*
+*  Specific JS code additions for datatable_basic.html page
+*
+*  Version: 1.0
+*  Latest update: Aug 1, 2015
+*
+* ---------------------------------------------------------------------------- */
+  // Table setup
+    // ------------------------------
+
+    // Setting datatable defaults
+    $.extend( $.fn.dataTable.defaults, {
+        autoWidth: false,
+        columnDefs: [{
+            orderable: false,
+            width: '100px',
+            targets: [ 5 ]
+        }],
+        dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
+        language: {
+            search: '<span>Filter:</span> _INPUT_',
+            searchPlaceholder: 'Type to filter...',
+            lengthMenu: '<span>Show:</span> _MENU_',
+            paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' }
+        },
+        drawCallback: function () {
+            $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').addClass('dropup');
+        },
+        preDrawCallback: function() {
+            $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').removeClass('dropup');
+        }
+    });
 
 
+    // Basic datatable
+    $('.datatable-basic').DataTable();
+
+    // External table additions
+    // ------------------------------
+
+    // Enable Select2 select for the length option
+    $('.dataTables_length select').select2({
+        minimumResultsForSearch: Infinity,
+        width: 'auto'
+    });
 
 });

@@ -6,7 +6,7 @@
         <div class="sidebar-user-material">
             <div class="category-content">
                 <div class="sidebar-user-material-content">
-                    <a href="#"><img src="assets/images/demo/users/face11.jpg" class="img-circle img-responsive" alt=""></a>
+                    <a href="#"><img src="<?php echo base_url()?>assets/images/demo/users/face11.jpg" class="img-circle img-responsive" alt=""></a>
                     <h6>Victoria Baker</h6>
                     <span class="text-size-small">Santa Ana, CA</span>
                 </div>
@@ -54,7 +54,7 @@
                         </ul>
                     </li>
                     <li><a href="<?php echo base_url()?>Dashboard/page/AddVehicle"><i class="icon-home4"></i> <span>Add Vehicle</span></a></li>
-                    <li><a href=""><i class="icon-home4"></i> <span>View Vehicle</span></a></li>
+                    <li><a href="<?php echo base_url()?>Dashboard/page/ViewVehicle"><i class="icon-home4"></i> <span>View Vehicle</span></a></li>
 
                     <!-- /page kits -->
 
