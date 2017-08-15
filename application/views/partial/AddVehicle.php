@@ -8,7 +8,8 @@
                     <?php if($this->session->flashdata('addFromValErr')){ ?>
                         <div class="alert bg-danger alert-styled-left">
                             <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
-                            <span class="text-semibold"> Opps! </span> Name of the Vehicle and Vehicle Description should not be empty.
+                            <span class="text-semibold"> Opps! </span><?php echo $this->session->flashdata('addFromValErr'); ?>
+<!--                            Name of the Vehicle and Vehicle Description should not be empty.-->
                         </div>
                     <?php }?>
                         <?php if($this->session->flashdata('addFromSucc')){ ?>
@@ -16,14 +17,11 @@
                                 <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
                                 <span class="text-semibold">Well done!</span> You successfully added a vehicle in the record.
                             </div>
-                            <div class="alert bg-info alert-styled-left">
-                                <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
-                                <span class="text-semibold">Heads up!</span> Please Add images of the Vehicle in the below setion.
-                            </div>
                         <?php } ?>
                     </div>
                 </div>
                 <!-- Text inputs -->
+                <form action="<?php echo base_url()?>Dashboard/addVehicle" method="post" enctype="multipart/form-data">
                 <div class="panel panel-flat border-top-lg border-top-violet-800 border-bottom-violet-800">
                     <div class="panel-heading">
                         <h5 class="panel-title">Add New Vehicle</h5>
@@ -38,7 +36,7 @@
 
                     <div class="panel-body">
                         <div class="row">
-                            <form action="<?php echo base_url()?>Dashboard/addVehicle" method="post">
+
                             <div class="col-md-6">
                                 <div class="form-group form-group-material">
                                     <label class="control-label">Name of the Vehicle</label>
@@ -110,9 +108,14 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group form-group-material">
-                                    <label class="control-label">Category</label>
-                                    <input type="text" class="form-control" name="category" placeholder="Category">
+                                <div class="form-group form-group-material mt-20">
+                                    <select name="category" class="selectbox">
+                                        <option value="">Select a Category</option>
+                                        <?php foreach (unserialize(VCATEGORY) as $cats) { ?>
+                                            <option value="<?php echo $cats['id'];?>"><?php echo $cats['name'];?></option>
+                                        <?php  }?>
+
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -190,37 +193,28 @@
                                     <input type="text" class="form-control" name="mission" placeholder="Mission">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="panel-footer">
-                        <div class="row">
-                            <div class="col-md-3 pull-right">
-                                <button type="reset" class="btn bg-danger"><i class="icon-reload-alt position-left"></i> Reset</button>
-                                <button type="submit" class="btn bg-info-400"><i class="icon-floppy-disk position-left"></i> Save</button>
+                            <div class="col-md-3">
+                                <div class="form-group mt-20">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="recom" class="control-info">
+                                            Mark as Recomended ?
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group form-group-material">
+                                    <input type="file" class="form-control" name="leadImg" placeholder="Lead Image">
+                                    <span class="help-block">Add an Image as a Display Image. May be a vehicle's front view</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </form>
+
                 </div> <!-- Panel End-->
                 <!-- /text inputs -->
                 <!-- Multiple file upload -->
-
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <?php if($this->session->flashdata('uploadImgFromErr')){ ?>
-                            <div class="alert bg-danger alert-styled-left">
-                                <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
-                                <span class="text-semibold">Oh snap!</span> Change a few things up and <a href="#" class="alert-link">try submitting again</a>.
-                            </div>
-                        <?php } ?>
-                        <?php if($this->session->flashdata('uploadImgFromSucc')){ ?>
-                            <div class="alert bg-success alert-styled-left">
-                                <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
-                                <span class="text-semibold">Well done!</span> You successfully uploaded vehicle image/s.
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
                 <div class="panel panel-flat border-top-lg border-top-pink-300 border-bottom-pink-300">
                     <div class="panel-heading">
                         <h5 class="panel-title">Upload Media</h5>
@@ -235,19 +229,23 @@
 
                     <div class="panel-body">
 
-                        <p class="text-semibold">Drop or Select Files to Upload:</p>
-                        <form action="<?php echo base_url()?>Dashboard/addVehicleImg" class="dropzone" id="dropzone_multiple" method="post">
+                        <p class="text-semibold">Select Files to Upload:</p>
+                        <div class="form-group">
+                            <input type="file" class="file-input" name="userFiles[]" data-main-class="input-group" multiple="multiple">
+                            <span class="help-block">Default file input</span>
+                        </div>
                     </div>
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-md-2 pull-right">
-                                <button type="submit" name="imgUpload" class="btn bg-violet-700"><i class="icon-upload position-left"></i> Upload</button>
+                            <div class="col-md-3 pull-right">
+                                <button type="reset" class="btn bg-danger"><i class="icon-reload-alt position-left"></i> Reset</button>
+                                <button type="submit" class="btn bg-violet-700"><i class="icon-floppy-disk position-left"></i> Save</button>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
                 <!-- /multiple file upload -->
+                    </form>
             </div>
         </div>
     </div>

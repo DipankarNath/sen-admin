@@ -1,19 +1,42 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-    class DashboardModel extends CI_Model
-    {
-        function __construct()
-        {
-            // Call the Model constructor
-            parent::__construct();
-        }
-        //we will use the select function
-        public function selectAll()
-        {
-            //data is retrive from this query
-            $query = $this->db->get('product');
-//            $result=$query->result();
+/**
+ * Created by PhpStorm.
+ * User: dipan
+ * Date: 14-08-2017
+ * Time: 23:29
+ */
+class DashboardModel extends CI_Model{
 
-            return $query;
+    public function addVehicle($vFormData){
+        if($this->db->insert('product', $vFormData)){
+            $lastDataId = $this->db->insert_id();
+            return $lastDataId;
+        } else {
+            return false;
+        }
+
+    }
+    public function insert_leadImg($leadImgData){
+        if($this->db->insert('images', $leadImgData)){
+            return true;
+        } else {
+            return false;
         }
     }
+    public function insert_otherImg($dataInfo){
+        if($this->db->insert('images', $dataInfo)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function selectAll()
+          {
+              //data is retrive from this query
+              $query = $this->db->get('product');
+              return $query;
+          }
+
+}
+
