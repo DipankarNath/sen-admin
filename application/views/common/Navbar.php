@@ -196,6 +196,12 @@
                         </div>
                     </div>
                 </li>
+                <li class="">
+                    <a href="<?php echo base_url();?>Auth/logout">
+                        <i class="icon-switch2"></i>
+                        <span class="visible-xs-inline-block position-right">Logout</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
