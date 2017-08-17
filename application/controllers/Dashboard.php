@@ -23,6 +23,15 @@ class Dashboard extends CI_Controller {
         $data['page'] = 'partial/'.$page;
         $this->load->view('common/Dashboard', $data);
     }
+    public function edit($pr_id)
+    {
+        //$data['page'] = 'partial/'.$id;
+        //$this->load->view('common/Dashboard', $data);
+        $this->load->model('DashboardModel');
+        $data['product_data'] = $this->DashboardModel->edit_product_by_id($pr_id);
+        $data['page'] = 'partial/EditVehicle';
+        $this->load->view('common/Dashboard', $data);
+    }
 
     public function addVehicle()
     {
@@ -115,5 +124,14 @@ class Dashboard extends CI_Controller {
         $data['page'] = 'partial/ViewVehicle';
         $this->load->view('common/Dashboard', $data);
 //        $this->load->view('ViewVehicle', $data);
+    }
+
+    public function get_product_by_id($pr_id)
+    {
+
+            //$this->load->database();
+            //$group_id = $this->input->get('group_id', TRUE);
+
+
     }
 }
