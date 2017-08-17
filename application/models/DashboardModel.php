@@ -30,6 +30,13 @@ class DashboardModel extends CI_Model{
         } else {
             return false;
         }
+        function edit_product_by_id($pr_id)
+        {
+            $this->db->select('*');
+            $this->db->where('Id', $pr_id);
+            $query = $this->db->get('product');
+            return $query;
+        }
     }
     public function selectAll()
           {

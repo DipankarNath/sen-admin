@@ -39,16 +39,11 @@
                         <td><?php echo $row->Model1;?></a></td>
                         <td><?php echo $row->BDimension;?></a></td>
                         <td>
-                            <span class="label label-success">
-                                <?php if($row->Status==1){
-                                        echo "Active";}
-                                ?>
-                            </span>
-                            <span class="label label-default">
-                                <?php if($row->Status==0) {  echo "Inactive";}
-                                ?>
 
-                            </span>
+                                <?php if($row->Status==1){
+                                        echo "<span class=\"label label-success\">Active </span>";}
+                                        else { echo "<span class=\"label label-default\">Inactive </span>";}
+                                ?>
                         </td>
 
                         <td class="text-center">
@@ -59,9 +54,8 @@
                                     </a>
 
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li>
-                                        <li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li>
-                                        <li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li>
+                                        <li><a href="<?php echo base_url()?>Dashboard/edit/<?php echo $row->Id; ?>"><i class="icon-eraser"></i> Edit</a></li>
+                                        <li><a href="#"><i class="icon-file-excel"></i> Remove</a></li>
                                     </ul>
                                 </li>
                             </ul>
