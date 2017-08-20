@@ -2,7 +2,24 @@
     <!-- Content area -->
     <div class="content">
         <div class="row">
-            <div class="panel panel-flat">
+            <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                    <?php if($this->session->flashdata('addFromValErr')){ ?>
+                        <div class="alert bg-danger alert-styled-left">
+                            <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
+                            <span class="text-semibold"> Opps! </span><?php echo $this->session->flashdata('addFromValErr'); ?>
+<!--                            Name of the Vehicle and Vehicle Description should not be empty.-->
+                        </div>
+                    <?php }?>
+                        <?php if($this->session->flashdata('addFromSucc')){ ?>
+                            <div class="alert bg-success alert-styled-left">
+                                <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
+                                <span class="text-semibold">Well done!</span> You successfully added a vehicle in the record.
+                            </div>
+                        <?php } ?>
+                    </div>
+            </div>
+            <div class="panel panel-flat border-top-lg border-top-pink-600 border-bottom-pink-600">
                 <div class="panel-heading">
                     <h5 class="panel-title">Search Record</h5>
                     <div class="heading-elements">
@@ -55,7 +72,7 @@
 
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a href="<?php echo base_url()?>Dashboard/edit/<?php echo $row->Id; ?>"><i class="icon-eraser"></i> Edit</a></li>
-                                        <li><a href="#"><i class="icon-file-excel"></i> Remove</a></li>
+                                        <li><a href="<?php echo base_url()?>Dashboard/remove/<?php echo $row->Id; ?>"><i class="icon-file-excel"></i> Remove</a></li>
                                     </ul>
                                 </li>
                             </ul>

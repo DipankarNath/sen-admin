@@ -6,7 +6,7 @@
  * Date: 14-08-2017
  * Time: 23:29
  */
-class DashboardModel extends CI_Model{
+class DashboardModel extends CI_Model{ 
 
     public function addVehicle($vFormData){
         if($this->db->insert('product', $vFormData)){
@@ -30,13 +30,19 @@ class DashboardModel extends CI_Model{
         } else {
             return false;
         }
-        function edit_product_by_id($pr_id)
-        {
-            $this->db->select('*');
-            $this->db->where('Id', $pr_id);
-            $query = $this->db->get('product');
-            return $query;
+
+    }
+    public function editVehicle($vFormData){
+
+        $this->db->where('Id', $vFormData['Id']);
+        if($this->db->update('product', $vFormData)){
+            $lastDataId = $this->db->insert_id();
+
+            return $lastDataId;
+        } else {
+            return false;
         }
+
     }
     public function selectAll()
           {
@@ -44,6 +50,44 @@ class DashboardModel extends CI_Model{
               $query = $this->db->get('product');
               return $query;
           }
-
+    public function editid($pr_id)
+    {
+        $this->db->select('*');
+        $this->db->where('Id', $pr_id);
+        //$this->db->query("    ");
+        $query = $this->db->get('product');
+        return $query;
+    }
+    public function remove($pr_id)
+    {
+        $this->db->select('*');
+        $this->db->where('Id', $pr_id);        
+        $query = $this->db->get('product');
+        $data = $query->result_array();
+        return $query;
+    }
+    public function removeStat($data,$pr_id,$status)
+    {
+        extract($data);
+        if($status == 0){
+            $this->db->where('Id', $pr_id);  
+            $this->db->update($table_name, array('Status' => 1)); 
+            return true;
+        }
+        else{
+            $this->db->where('Id', $pr_id);  
+            $this->db->update($table_name, array('Status' => 0)); 
+            return true;
+        }  
+        
+    }
+    public function getimage()
+    {
+        $pr_id = $this->uri->segment('3'); 
+        $query = $this->db->query("select * from images where Lead =1 and Prod_Id='.$pr_id.'");
+        $result=$query->result();
+        return $result;
+       
+    }
 }
 
