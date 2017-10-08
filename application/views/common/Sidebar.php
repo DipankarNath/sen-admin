@@ -33,7 +33,7 @@
         <!-- Main navigation -->
         <div class="sidebar-category sidebar-category-visible">
             <div class="category-content no-padding">
-                <ul class="navigation navigation-main navigation-accordion">
+                <ul class="navigation navigation-main navigation-accordion"> 
 
                     <!-- Main -->
                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
