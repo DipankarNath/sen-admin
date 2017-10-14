@@ -49,8 +49,8 @@ class Dashboard extends CI_Controller {
         $this->form_validation->set_rules('vehicleDescr', 'Vehicle Description', 'trim|required|min_length[3]');
         $this->form_validation->set_rules('maker', 'Maker', 'trim');
         $this->form_validation->set_rules('displace', 'Displacement', 'trim');
-        $this->form_validation->set_rules('fuel', 'Fuel', 'trim|xss_clean');
-        $this->form_validation->set_rules('capacity', 'Capacity', 'trim|xss_clean');
+        $this->form_validation->set_rules('fuel', 'Fuel', 'trim');
+        $this->form_validation->set_rules('capacity', 'Capacity', 'trim');
         $this->form_validation->set_rules('inspection', 'Vehicle inspection crack', 'trim');
         $this->form_validation->set_rules('inspecRecord', 'Inspection record', 'trim');
         $this->form_validation->set_rules('spdCon', 'Speed ​​control device', 'trim');
@@ -324,7 +324,7 @@ class Dashboard extends CI_Controller {
         }
         $data['page'] = 'partial/EditVehicle';
         redirect(base_url().'Dashboard/view');
-    }
+    } 
   
     public function view()
     {

@@ -3,7 +3,7 @@
     <div class="content">
         <div class="row">
          <div class="col-lg-12">
-         <div class="row">
+            <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                     <?php if($this->session->flashdata('addFromValErr')){ ?>
                         <div class="alert bg-danger alert-styled-left">
@@ -19,7 +19,7 @@
                             </div>
                         <?php } ?>
                     </div>
-                </div>
+            </div>
                 <!-- Display -->
          <form action="<?php echo base_url()?>Dashboard/editVehicle" method="post" enctype="multipart/form-data">
             <div class="panel panel-flat border-top-lg border-top-blue-600 border-bottom-blue-600">
