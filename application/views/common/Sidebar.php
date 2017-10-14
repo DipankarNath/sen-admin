@@ -54,7 +54,7 @@
                         </ul>
                     </li>
                     <li><a href="<?php echo base_url()?>Dashboard/page/AddVehicle"><i class="icon-home4"></i> <span>Add Vehicle</span></a></li>
-                    <li><a href="<?php echo base_url()?>Dashboard/page/ViewVehicle"><i class="icon-home4"></i> <span>View Vehicle</span></a></li>
+                    <li><a href="<?php echo base_url()?>Dashboard/view"><i class="icon-home4"></i> <span>View Vehicle</span></a></li>
 
                     <!-- /page kits -->
 

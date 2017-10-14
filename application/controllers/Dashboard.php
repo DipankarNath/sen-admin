@@ -37,8 +37,8 @@ class Dashboard extends CI_Controller {
         $this->form_validation->set_rules('vehicleDescr', 'Vehicle Description', 'trim|required|min_length[3]');
         $this->form_validation->set_rules('maker', 'Maker', 'trim');
         $this->form_validation->set_rules('displace', 'Displacement', 'trim');
-        $this->form_validation->set_rules('fuel', 'Fuel', 'trim|xss_clean');
-        $this->form_validation->set_rules('capacity', 'Capacity', 'trim|xss_clean');
+        $this->form_validation->set_rules('fuel', 'Fuel', 'trim');
+        $this->form_validation->set_rules('capacity', 'Capacity', 'trim');
         $this->form_validation->set_rules('inspection', 'Vehicle inspection crack', 'trim');
         $this->form_validation->set_rules('inspecRecord', 'Inspection record', 'trim');
         $this->form_validation->set_rules('spdCon', 'Speed ​​control device', 'trim');
@@ -123,9 +123,10 @@ class Dashboard extends CI_Controller {
                         $this->session->set_flashdata('errLeadImg', $leadImgUldErr);
                     } else { // Upload successful
                         $leadUpload_data = $this->upload->data();
+                        $image_path = base_url("/assets/images/vcimg/". $leadUpload_data['raw_name'].$leadUpload_data['file_ext']);
                         $leadImgData = array(
                             "TOC" => date('Y-m-d H:i:s'),
-                            "Path" => $leadUpload_data['full_path'],
+                            "Path" => $image_path,
                             "Lead" => 1,
                             "Prod_Id" => $lastInsertedId,
                             "Status" => 1
@@ -158,9 +159,10 @@ class Dashboard extends CI_Controller {
                                     $this->session->set_flashdata('errOtherImg', $otherImgUldErr);
                                 } else { // Upload successful
                                     $otherImageData = $this->upload->data();
+                                    $image_path = base_url("/assets/images/vcimg/". $otherImageData['raw_name'].$otherImageData['file_ext']);
                                     $dataInfo = array(
                                         "TOC" => date('Y-m-d H:i:s'),
-                                        "Path" => $otherImageData['full_path'],
+                                        "Path" => $image_path,
                                         "Lead" => 0,
                                         "Prod_Id" => $lastInsertedId,
                                         "Status" => 1

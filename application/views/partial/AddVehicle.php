@@ -40,13 +40,13 @@
                             <div class="col-md-6">
                                 <div class="form-group form-group-material">
                                     <label class="control-label">Name of the Vehicle</label>
-                                    <input type="text" class="form-control" name="vehicleName" placeholder="Name of the Vehicle">
+                                    <input type="text" class="form-control" name="vehicleName" placeholder="Name of the Vehicle" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group form-group-material">
                                     <label class="control-label">Vehicle Description</label>
-                                    <input type="text" class="form-control" name="vehicleDescr" placeholder="Vehicle Description">
+                                    <input type="text" class="form-control" name="vehicleDescr" placeholder="Vehicle Description" required>
                                 </div>
                             </div>
                         </div>
@@ -109,8 +109,8 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group form-group-material mt-20">
-                                    <select name="category" class="selectbox">
-                                        <option value="">Select a Category</option>
+                                    <select name="category" class="selectbox" required>
+                                        <option value="0">Select a Category </option>
                                         <?php foreach (unserialize(VCATEGORY) as $cats) { ?>
                                             <option value="<?php echo $cats['id'];?>"><?php echo $cats['name'];?></option>
                                         <?php  }?>
@@ -205,7 +205,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group form-group-material">
-                                    <input type="file" class="form-control" name="leadImg" placeholder="Lead Image">
+                                    <input type="file" class="form-control" name="leadImg" placeholder="Lead Image" required>
                                     <span class="help-block">Add an Image as a Display Image. May be a vehicle's front view</span>
                                 </div>
                             </div>
